@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.smartooth.customer.mapper.CustomerTeethMapper">
+
+
+
+
+
+	<!-- 충치 단계별 수치 조회 -->
+	<select id="selectCavityLevel" resultType="hashmap">
+
+		SELECT CAVITY_NORMAL
+				   ,CAVITY_CAUTION
+				   ,CAVITY_DANGER
+				   ,DATE_FORMAT(CAVITY_SET_DT, '%Y-%m-%d') AS CAVITY_SET_DT
+		FROM ST_CAVITY_LEVEL
+		
+	</select>
+
+
+
+
+
+    <!-- 조회 앱 - 회원 치아 상태 값 INSERT -->
+    <insert id="insertUserTeethInfo" parameterType="co.smartooth.customer.vo.CustomerTeethInfoVO">
+    	
+    	INSERT INTO ST_TEETH_INFO
+			(
+				USER_NO
+				,USER_ID
+				,TEETH_STATUS
+				,RECORD_DT
+			)
+		VALUES
+			(
+				#{userNo}
+				,#{userId}
+				,#{teethStatus}
+				,SYSDATE()
+			)
+			
+    </insert>
+
+
+	
+   	<!-- 조회 앱 - 회원 치아 측정 값 조회 (기간 : default 1년) --> 
+    <select id="selectUserTeethMeasureValue" parameterType="String" resultType="hashmap">
+		
+		SELECT 
+			USER_NO			AS userNo
+			,USER_ID 			AS userId
+			,T01															AS t01
+			,T02															AS t02
+			,T03															AS t03
+			,T04															AS t04
+			,T05															AS t05
+			,T06															AS t06
+			,T07															AS t07
+			,T08															AS t08
+			,T09															AS t09
+			,T10															AS t10
+			,T11															AS t11
+			,T12															AS t12
+			,T13															AS t13
+			,T14															AS t14
+			,T15															AS t15
+			,T16															AS t16
+			,T17															AS t17
+			,T18															AS t18
+			,T19															AS t19
+			,T20															AS t20
+			,T21															AS t21
+			,T22															AS t22
+			,T23															AS t23
+			,T24															AS t24
+			,T25															AS t25
+			,T26															AS t26
+			,T27															AS t27
+			,T28															AS t28
+			,T29															AS t29
+			,T30															AS t30
+			,T31															AS t31
+			,T32															AS t32
+			,T33															AS t33
+			,T34															AS t34
+			,T35															AS t35
+			,T36															AS t36
+			,T37															AS t37
+			,T38															AS t38
+			,T39															AS t39
+			,T40															AS t40
+			,T41															AS t41
+			,T42															AS t42
+			,T43															AS t43
+			,T44															AS t44
+			,T45															AS t45
+			,T46															AS t46
+			,T47															AS t47
+			,T48															AS t48
+			,T49															AS t49
+			,T50															AS t50
+			,T51															AS t51
+			,T52															AS t52
+			,T53															AS t53
+			,T54															AS t54
+			,T55															AS t55
+			,T56															AS t56
+			,CAVITY_NORMAL											AS cavityNormal
+			,CAVITY_CAUTION										AS cavityCaution
+			,CAVITY_DANGER											AS cavityDanger
+			,PERM_CAVITY_NORMAL								AS permCavityNormal
+			,PERM_CAVITY_CAUTION								AS permCavityCaution
+			,PERM_CAVITY_DANGER									AS permCavityDanger
+			,DIAG_CD													AS diagCd
+			,ORGAN_CODE												AS organCode
+			,MEASURER_ID												AS measurerId
+			,DATE_FORMAT(MEASURE_DT, '%Y-%m-%d')		AS measureDt
+		 FROM ST_TEETH_MEASURE
+		WHERE 1=1 
+		AND USER_ID = #{userId}
+		AND DATE_FORMAT(MEASURE_DT, '%Y-%m-%d') BETWEEN #{startDt} AND #{endDt}
+		ORDER BY MEASURE_DT DESC
+		
+    </select >
+	
+	
+	
+</mapper>

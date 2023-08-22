@@ -1,0 +1,809 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'NanumSquareR';
+	src: url(/fonts/NanumSquareR.ttf) format('truetype');
+}
+
+body {
+    font-family: 'NanumSquareR';
+    display: flex;
+    justify-content: center;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    height: 100vh;
+    width: 100%;
+}
+
+div{
+	font-family: 'NanumSquareR';
+}
+
+.container {
+    min-width: 375px;
+    max-width: 375px;
+    margin-left: auto;
+    margin-right: auto;
+	width: 100%;
+}
+
+.container-wrap{
+	display: flex;
+    align-items: center;
+    /* 결과지 크기 - background 크기와 연결 : 넓이, 높이 맞춰야함 */
+    /* width: 450px; */
+}
+
+.input-form {
+    background: #ffffff;
+    padding-right: 0px;
+    padding-left: 0px;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+    min-width: 375px;
+    max-width: 375px;
+}
+
+.menu_btn{
+    display: flex;
+    border-top: 1px solid #EBEBEB;
+    border-left: 1px solid #EBEBEB;
+    border-right: 1px solid #EBEBEB;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-collapse: collapse;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+	width: 170px;
+    height: 100%;
+}
+
+#diagnosis_graph_btn{
+	color: #707070;
+	font-size: 13px;
+}
+
+#diagnosis_data_btn{
+	background-color: #EBEBEB;
+	font-weight: bold;
+    font-size: 16px;
+}
+
+.menu_btn:hover{
+	cursor: pointer;
+}
+
+#logout{
+	display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 9%;
+}
+
+#logout:hover{
+	cursor: pointer;
+}
+
+#logout_btn{
+    width: 30px;
+}
+
+.background {
+    background-image: url(/imgs/layout/statistics/diagnosis/diagnosis_main_api.jpg);
+    background-size: 375px 870px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
+
+
+/** 결과지 회원 정보 및 측정일 */
+.container-top {
+    height: 90px;
+}
+
+.container-margin{
+	height: 22px;
+}
+
+.userName {
+    float: left;
+    margin-left: 61px;
+    margin-top: 9px;
+    font-size: 26px;
+    font-weight: bold;
+    width: 163px;
+}
+
+.measureDt-title{
+    display: flex;
+    justify-content: center;
+    margin-top: 6px;
+    color: #878787;
+    font-size: 13px;
+}
+
+#measureDtList{
+	font-family: 'NanumSquareR';
+	font-size: 16px;
+    text-align: center;
+}
+
+.measureDt {
+    display: flex;
+    justify-content: center;
+    float: left;
+    width: 144px;
+}
+
+.contentsWrap {
+	display: flex;
+    width: 100%;
+    height: 425px;
+}
+
+.toothwrap{
+	position: relative;
+}
+
+.toothCondition {
+    width: 191px;
+   	height: 427px;
+}
+
+.teeth{
+	display: flex;
+    align-items: center;
+    justify-content: center;	
+	font-size: 10px;
+}
+
+
+
+#t11{
+	position: absolute;
+    top: 58px;
+    left: 72.5px;
+    width: 25px;
+    height: 28px;
+}
+
+#t12{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 22px 22px;
+    top: 66.5px;
+    left: 55px;
+    width: 22px;
+    height: 22px;
+}
+
+#t13{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 26px 22px;
+    top: 79.5px;
+    left: 40px;
+    width: 26px;
+    height: 22px;
+}
+
+#t14{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 26px 22.5px;
+    top: 96.5px;
+    left: 30px;
+    width: 26px;
+    height: 22.5px;
+}
+
+#t15{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 26px 21.5px;
+    top: 114px;
+    left: 22.5px;
+    width: 26px;
+    height: 21.5px;
+}
+
+#t16{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 29.5px 26px;
+    top: 134px;
+    left: 16.5px;
+    width: 29.5px;
+    height: 26px;
+}
+
+#t17{
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 29px 25px;
+    top: 159px;
+    left: 14px;
+    width: 29px;
+    height: 25px;
+}
+
+#t18{
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 30px 24.5px;
+    top: 183px;
+    left: 14px;
+    width: 30px;
+    height: 24.5px;
+}
+
+#t21{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 25px 28px;
+    top: 58px;
+    left: 97.5px;
+    width: 25px;
+    height: 28px;
+}
+
+#t22{
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 22px 22.5px;
+    top: 66px;
+    left: 119px;
+    width: 22px;
+    height: 22.5px;
+}
+
+#t23{
+position: absolute;
+	background-repeat: no-repeat;
+    background-size: 25.5px 21.5px;
+    top: 80px;
+    left: 130px;
+    width: 25.5px;
+    height: 21.5px;
+}
+
+#t24{
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 26px 23.5px;
+    top: 96px;
+    left: 140px;
+    width: 26PX;
+    height: 23.5px;
+}
+
+#t25{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 26.5px 21px;
+    top: 114.5px;
+    left: 147px;
+    width: 26.5px;
+    height: 21px;	
+}
+
+#t26{
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 30px 27px;
+    top: 134px;
+    left: 150px;
+    width: 30px;
+    height: 27px;
+}
+
+#t27{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 28px 24px;
+    top: 160px;
+    left: 153px;
+    width: 28px;
+    height: 24px;
+}
+
+#t28{
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 30px 24px;
+    top: 183px;
+    left: 152px;
+    width: 30px;
+    height: 24px;
+}
+
+
+#t51 {
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 24px 18px;
+    top: 29px;
+    left: 74px;
+    width: 24px;
+    height: 18px;
+}
+
+#t52 {
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 20px 17px;
+    top: 33px;
+    left: 55px;
+    width: 20px;
+    height: 17px;
+}
+
+#t53 {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 21px 20px;
+    top: 41px;
+    left: 37px;
+    width: 21px;
+    height: 20px;
+}
+
+#t54 {
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 26.5px 28px;
+    top: 52px;
+    left: 16.5px;
+    width: 26.5px;
+    height: 28px;
+}
+
+#t55 {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 28px 31px;
+    top: 68px;
+    left: 0px;
+    width: 28px;
+    height: 31px;
+}
+
+#t61 {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 24px 18px;
+    top: 29px;
+    left: 98px;
+    width: 24px;
+    height: 18px;
+}
+
+#t62 {
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 19px 18px;
+    top: 33px;
+    left: 121.5px;
+    width: 19px;
+    height: 18px;
+}
+
+#t63 {
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 20px 19.5px;
+    top: 41px;
+    left: 138.2px;
+    width: 20px;
+    height: 19.5px;
+}
+
+#t64 {
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 26.5px 27px;
+    top: 52px;
+    left: 152.5px;
+    width: 26.5px;
+    height: 27px;
+}
+
+#t65 {
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 28px 31px;
+    top: 68px;
+    left: 167px;
+    width: 28px;
+    height: 31px;
+}
+
+#t71 {
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 16px 13px;
+    top: 382px;
+    left: 98px;
+    width: 16px;
+    height: 13px;
+}
+
+#t72 {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 17px 16px;
+    top: 378px;
+    left: 113.5px;
+    width: 17px;
+    height: 16px;
+}
+
+#t73 {
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 20.5px 21px;
+    top: 369px;
+    left: 128px;
+    width: 20.5px;
+    height: 21px;
+}
+
+#t74 {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 26px 25px;
+    top: 354px;
+    left: 145.5px;
+    width: 26px;
+    height: 25px;
+}
+
+#t75 {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 32px 30px;
+    top: 334px;
+    left: 163px;
+    width: 32px;
+    height: 30px;
+}
+
+
+#t81 {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 17px 13px;
+    top: 382px;
+    left: 81px;
+    width: 17px;
+    height: 13px;
+}
+
+#t82 {
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 18px 15px;
+    top: 379px;
+    left: 64px;
+    width: 18px;
+    height: 15px;
+}
+
+#t83 {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 20.5px 20px;
+    top: 369px;
+    left: 47px;
+    width: 20.5px;
+    height: 20px;
+}
+
+#t84 {
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 26.5px 26px;
+    top: 354px;
+    left: 24px;
+    width: 26.5px;
+    height: 26px;
+}
+
+#t85 {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 32px 31px;
+    top: 333px;
+    left: 1px;
+    width: 32px;
+    height: 31px;
+}
+
+#t31{
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 14px 19.5px;
+    top: 348px;
+    left: 97px;
+    width: 14px;
+    height: 19.5px;
+}
+
+#t32{
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 16px 21px;
+    top: 345px;
+    left: 109px;
+    width: 16px;
+    height: 21px;
+}
+
+#t33{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 20.5px 23px;
+    top: 336px;
+    left: 118px;
+    width: 20.5px;
+    height: 23px;
+}
+
+#t34{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 21.5px 20px;
+    top: 325px;
+    left: 130px;
+    width: 21.5px;
+    height: 20px;
+}
+
+#t35{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 24.5px 22.5px;
+    top: 308px;
+    left: 140px;
+    width: 24.5px;
+    height: 22.5px;
+}
+
+#t36{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 28.5px 27px;
+    top: 284px;
+    left: 145px;
+    width: 28.5px;
+    height: 27px;
+}
+
+#t37{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 28.5px 28px;
+    top: 257px;
+    left: 150px;
+    width: 28.5px;
+    height: 28px;
+}
+
+#t38{
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 29px 24.5px;
+    top: 233px;
+    left: 151px;
+    width: 29px;
+    height: 24.5px;
+}
+
+#t41{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 13.5px 20px;
+    top: 348px;
+    left: 84.5px;
+    width: 13.5px;
+    height: 20px;
+}
+
+#t42{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 17.5px 21px;
+    top: 345px;
+    left: 69px;
+    width: 17.5px;
+    height: 21px;
+}
+
+#t43{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 20px 22px;
+    top: 337px;
+    left: 57px;
+    width: 20px;
+    height: 22px;
+}
+
+#t44{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 21px 20px;
+    top: 325px;
+    left: 44px;
+    width: 21px;
+    height: 20px;
+}
+
+#t45{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 25px 22px;
+    top: 309px;
+    left: 29.5px;
+    width: 25px;
+    height: 22px;
+}
+
+#t46{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 28px 28px;
+    top: 284px;
+    left: 21.5px;
+    width: 28px;
+    height: 28px;
+}
+
+#t47{
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: 28px 28px;
+    top: 257px;
+    left: 17px;
+    width: 28px;
+    height: 28px;
+}
+
+#t48{
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 28.5px 24.5px;
+    top: 233px;
+    left: 15.5px;
+    width: 28.5px;
+    height: 24.5px;
+}
+
+.cavityAmount{
+	width: 113px
+}
+
+.cavityValue-danger-title {
+    width: 113px;
+    height: 20px;
+    text-align: center;
+    color: #E95050;
+    font-size: 14px;
+}
+
+.cavityValue-caution-title {
+    width: 113px;
+    height: 20px;
+    text-align: center;
+    color: #E99C00;
+    font-size: 14px;
+}
+
+.cavityValue-normal-title {
+  	width: 113px;
+    height: 25px;
+    text-align: center;
+    color: #68AE00;
+}
+
+.cavityValueHeight-top{
+	width: 113px;
+	height: 55px;
+}
+
+.cavityValueHeight-middle{
+	width: 113px;
+   	height: 40px;
+}
+
+.cavityValueHeight-bottom{
+	width: 113px;
+   	height: 40px;
+}
+
+.cavityValue{
+	height: 25px;
+    margin-right: 7px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 113px;
+    margin-top: 4px;
+}
+
+.comment {
+	width: 375px;
+}
+
+.comment-top {
+    height: 37px;
+    color: #ffffff;
+    font-size: 18px;
+    width: 55px;
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+	display: flex;
+    width: 375px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    height: 43px;
+    align-items: center;
+    justify-content: center;
+}
+
+.contents{
+
+}
+
+#diagDescript{
+/*     overflow-y: scroll; */
+/*     margin: 15px 0px 0px 20px; */
+/*     padding-right: 9px; */
+/*     color: #000000; */
+/*     font-size: 14px; */
+/*     font-weight: normal; */
+/*     line-height: 23px; */
+/*     height: 190px; */
+/*     width: 335px; */
+    overflow-y: scroll;
+    padding-left: 5px;
+    margin: 9px 0px 0px 20px;
+    padding-right: 9px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 23px;
+    height: 195px;
+    width: 330px;
+}
+
+#textarea_diagDescript{
+    width: 349px;
+   	height: 242px;
+	margin-left: 10px;
+	padding-top: 20px;
+}
+
+.contents-bottom-div{
+display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 12px;
+    color: #7A7A7A;
+    height: 45px;
+    margin-top: 9px;
+}
+
+footer{
+	text-align: center;
+	font-size: 12px;
+}

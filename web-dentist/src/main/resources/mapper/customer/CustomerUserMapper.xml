@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.smartooth.customer.mapper.CustomerUserMapper">
+
+	
+	<!-- 조회 앱 이메일 등록 여부 확인 (0: 없음, 1: 있음) -->
+	<select id="isExistId" parameterType="String" resultType="Integer">
+	
+		SELECT COUNT(*)
+		FROM ST_USER
+		WHERE 1=1
+		AND USER_ID = #{userId}
+			
+	</select>
+	
+	
+	
+	<!-- 조회 앱 회원 계정 등록  -->
+    <insert id="insertUserInfo" parameterType="co.smartooth.customer.vo.CustomerUserVO">
+    	
+    	INSERT INTO ST_USER
+    	(
+    		USER_NO
+    		,USER_ID
+    		,USER_PWD
+    		,USER_NAME
+    		,USER_TYPE
+    		,USER_BIRTHDAY
+    		,USER_STATE
+    		,USER_ADDRESS
+    		,USER_TEL_NO
+    		,USER_SEX
+    		,USER_RGST_DT
+    		,PUSH_TOKEN
+    		,USER_DELETE_YN
+    		,USER_DELETE_DT
+    		,LOGIN_DT
+    		,LOGIN_CK
+    	)
+    	VALUES
+    	(
+    		#{userNo}
+    		,#{userId}
+    		,#{userPwd}
+    		,#{userName}
+    		,#{userType}
+    		,#{userBirthday}
+    		,#{userCountry}
+    		,#{userState}
+    		,#{userTelNo}
+    		,#{userSex}
+    		,SYSDATE()
+    		,#{pushToken}
+    		,'N'
+    		,NULL
+    		,SYSDATE()
+    		,0
+   		)
+   		
+    </insert>
+	
+	
+	
+	<!-- 조회 앱 회원 상세 정보 등록 -->
+	<insert id="insertCustomerUserDetail" parameterType="co.smartooth.customer.vo.CustomerUserVO">
+    	
+    	INSERT INTO ST_CUSTOMER_USER_DETAIL
+    	(
+    		USER_NO
+    		,USER_ID
+    		,PR_USER_NAME
+    		,PR_USER_TEL_NO
+    		,PR_USER_EMAIL
+    		,AGRE_YN
+    	)
+    	VALUES
+    	(
+    		#{userNo}
+    		,#{userId}
+    		,#{prUserName}
+    		,#{prUserTelNo}
+    		,#{prUserEmail}
+    		<choose>
+				<when test="agreYn != null and agreYn != '' ">
+					,#{agreYn}
+				</when> 
+				<otherwise>
+					,'N'
+			   </otherwise> 
+			</choose> 
+    		
+    		
+   		)
+   		
+    </insert>
+    
+    
+    
+    <!-- 조회 앱 계정 정보 조회 -->
+    <select id="selectUserInfo" parameterType="String" resultType="co.smartooth.customer.vo.CustomerUserVO">
+    
+         SELECT
+       		USER_NO
+   			,USER_ID
+		    ,USER_NAME
+		    ,USER_EMAIL
+		    ,USER_TYPE
+		    ,USER_BIRTHDAY
+			,USER_COUNTRY
+		    ,USER_STATE
+		    ,USER_ADDRESS
+		    ,USER_TEL_NO
+		    ,USER_SEX
+		    ,DATE_FORMAT(USER_RGST_DT, '%Y-%m-%d') AS USER_RGST_DT
+		    ,PUSH_TOKEN 
+		    ,USER_DELETE_YN
+		    ,DATE_FORMAT(USER_DELETE_DT, '%Y-%m-%d') AS USER_DELETE_DT
+		    ,DATE_FORMAT(LOGIN_DT, '%Y-%m-%d') AS LOGIN_DT
+		    ,LOGIN_CK
+		FROM ST_USER
+		WHERE 1=1
+		<if test="userId != null and userId != '' ">
+			AND USER_ID = #{userId}
+   		</if>
+   		
+    </select>
+    
+    
+    
+    <!-- 회원 정보 업데이트 -->
+    <update id="updateUserInfo" parameterType="co.smartooth.customer.vo.CustomerUserVO">
+    
+		UPDATE ST_USER
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="userPwd != null and userPwd != '' ">
+				USER_PWD = #{userPwd},
+	   		</if>
+			<if test="userName != null and userName != '' ">
+				USER_NAME = #{userName},
+	   		</if>	
+			<if test="userBirthday != null and userBirthday != '' ">
+				USER_BIRTHDAY = #{userBirthday},
+	   		</if>	
+			<if test="userCountry != null and userCountry != '' ">
+				USER_COUNTRY = #{userCountry},
+	   		</if>	
+			<if test="userState != null and userState != '' ">
+				USER_STATE = #{userState},
+	   		</if>	
+			<if test="sidoNm != null and sidoNm != '' ">
+				,SIDO_NM = #{sidoNm},
+	   		</if>	
+			<if test="sigunguNm != null and sigunguNm != '' ">
+				,SIGUNGU_NM = #{sigunguNm},
+	   		</if>	
+			<if test="eupmyeondongNm != null and eupmyeondongNm != '' ">
+				,EUPMYEONDONG_NM = #{eupmyeondongNm},
+	   		</if>	
+			<if test="userTelNo != null and userTelNo != '' ">
+				 USER_TEL_NO = #{userTelNo},
+	   		</if>	
+			<if test="userSex != null and userSex != '' ">
+				 USER_SEX = #{userSex},
+	   		</if>	
+   		</trim>
+		WHERE 1=1
+		AND USER_ID = #{userId}
+		
+    </update>
+    
+    
+    
+    
+    
+      <!-- 푸시토큰 업데이트(등록, 수정) -->
+    <update id="updatePushToken" parameterType="String">
+    
+		UPDATE ST_USER
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="pushToken != null and pushToken != '' ">
+				PUSH_TOKEN = #{pushToken},
+	   		</if>
+   		</trim>
+		WHERE 1=1
+		AND USER_ID = #{userId}
+		
+    </update>
+    
+	
+</mapper>
