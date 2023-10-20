@@ -9,7 +9,7 @@ import co.smartooth.customer.vo.CustomerTeethInfoVO;
 /**
  * 작성자 : 정주현 
  * 작성일 : 2022. 04. 28
- * 수정일 : 2023. 05. 24
+ * 수정일 : 2023. 09. 05
  */
 public interface CustomerTeethService {
 
@@ -26,6 +26,8 @@ public interface CustomerTeethService {
 	public List<HashMap<String, Object>> selectUserTeethMeasureValue(@Param("userId") String userId,  @Param("startDt") String startDt, @Param("endDt") String endDt) throws Exception;
 	
 	
+	// 조회 앱 - 치과에서 측정한 같은 사용자가 있을 경우 측정 기록 조회
+	public List<HashMap<String, Object>> selectUserTeethMeasureValueInDentist(@Param("userId") String userId,  @Param("startDt") String startDt, @Param("endDt") String endDt) throws Exception;
 	
 	
 	

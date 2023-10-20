@@ -64,14 +64,14 @@ public class CustomerLoginController {
        
 	    Logger logger = LoggerFactory.getLogger(getClass());
 
-	    logger.debug("========== CustomerLoginController ========== /customer/login.do ==========");
-	    logger.debug("========== CustomerLoginController ========== /customer/login.do ==========");
-	    logger.debug("========== CustomerLoginController ========== /customer/login.do ==========");
-	    logger.debug("========== CustomerLoginController ========== /customer/login.do ==========");
+	    logger.debug("========== Customer.LoginController ========== /customer/login.do ==========");
+	    logger.debug("========== Customer.LoginController ========== /customer/login.do ==========");
+	    logger.debug("========== Customer.LoginController ========== /customer/login.do ==========");
+	    logger.debug("========== Customer.LoginController ========== /customer/login.do ==========");
 	    
 	    
 	    // 언어팩
-	    //String lang = (String)paramMap.get("lang");
+	    // String lang = (String)paramMap.get("lang");
 	    // String lang = "ko";
 	    String userId = null;
 		String userPwd = null;
@@ -106,6 +106,7 @@ public class CustomerLoginController {
 		
 		HashMap<String,Object> hm = new HashMap<String,Object>();
 		List<HashMap<String, Object>> userTeethValueList = new ArrayList<HashMap<String, Object>>();
+		List<HashMap<String, Object>> userTeethValueListInDentist = new ArrayList<HashMap<String, Object>>();
 		List<HashMap<String, Object>> dentalHospitalVisitList = new ArrayList<HashMap<String, Object>>();
 		
 		// 유치 개수 20개
@@ -119,8 +120,6 @@ public class CustomerLoginController {
 		Integer cautionLevel = 0;
 		// 충치단계 값(위험)
 		Integer dangerLevel = 0;
-		
-		//List<HashMap<String, Object>> measureOranList = new ArrayList<HashMap<String, Object>>();
 		
 		// 로그인 인증 VO
 		CustomerAuthVO customerAuthVO = new CustomerAuthVO();
@@ -140,8 +139,9 @@ public class CustomerLoginController {
 		
 		
 		// 비밀번호 암호화 
-		AES256Util aes256Util = new AES256Util();
-		userPwd = aes256Util.aesEncode((String)paramMap.get("userPwd"));
+		// AES256Util aes256Util = new AES256Util();
+		// userPwd = aes256Util.aesEncode((String)paramMap.get("userPwd"));
+		 userPwd = (String)paramMap.get("userPwd");
 		
 		if(userPwd.equals("false")) { // 암호화에 실패할 경우
 			hm.put("code", "500");
@@ -186,12 +186,25 @@ public class CustomerLoginController {
 				
 				// 로그인 일자 업데이트
 				customerLogService.updateLoginDt(customerAuthVO);
-				
 				// 고객정보
 				customerUserVO = customerUserService.selectUserInfo(userId);
 				// 1년 측정 기록
-				userTeethValueList = customerTeethService.selectUserTeethMeasureValue(userId, startDt, endDt);
-
+				// userTeethValueList = customerTeethService.selectUserTeethMeasureValue(userId, startDt, endDt);
+				
+				// 치과에서 측정한 같은 사용자가 있는지 조회 (조회 기준 >> 이름, 전화번호, 생년월일)
+				List<HashMap<String, Object>>  equalUserInfo = customerUserService.selectEqualUserInfo(customerUserVO.getUserName(), customerUserVO.getUserTelNo(), customerUserVO.getUserBirthday(), userId);
+				
+				
+				if(equalUserInfo != null) {
+					// 치과에서 측정한 같은 사용자가 있을 경우 측정 기록 조회
+					for(int i=0; i<equalUserInfo.size(); i++) {
+						userTeethValueList.addAll(userTeethValueList.size(), customerTeethService.selectUserTeethMeasureValueInDentist((String)equalUserInfo.get(i).get("USER_ID"), startDt, endDt));
+					}
+				}
+//				else {
+//					hm.put("userTeethValueListInDentist", null);
+//				}
+				
 				// 유치(주의,심각), 영구치(주의,심각) 개수 카운팅
 				for (int i = 0; i < userTeethValueList.size(); i++) {
 
@@ -199,7 +212,6 @@ public class CustomerLoginController {
 					int babyDangerCnt = 0;
 					int permCautionCnt = 0;
 					int permDangerCnt = 0;
-					
 					
 					babyTeethValueArray[0] = Integer.parseInt(userTeethValueList.get(i).get("t34").toString());
 					babyTeethValueArray[1] = Integer.parseInt(userTeethValueList.get(i).get("t35").toString());
@@ -291,7 +303,7 @@ public class CustomerLoginController {
 				}
 				
 				try {
-					// 3개월 방문 병원 리스트
+				 	// 3개월 방문 병원 리스트
 					dentalHospitalVisitList = customerOrganService.selectDentalHospitalVisitList(userId, measureStartDt, measureEndDt);
 				} catch (Exception e) {
 					hm.put("dentalHospitalVisitList", null);
@@ -301,8 +313,7 @@ public class CustomerLoginController {
 				hm.put("userAuthToken", userAuthToken);
 				hm.put("userInfo", customerUserVO);
 				hm.put("userTeethValueList", userTeethValueList);
-				hm.put("dentalHospitalVisitList", dentalHospitalVisitList);
-
+				// hm.put("dentalHospitalVisitList", dentalHospitalVisitList);
 				// 메시지 RETURN
 				hm.put("code", "000");
 				

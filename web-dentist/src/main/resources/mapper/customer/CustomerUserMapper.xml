@@ -41,13 +41,13 @@
     	(
     		#{userNo}
     		,#{userId}
-    		,#{userPwd}
-    		,#{userName}
+    		,TO_BASE64(HEX(AES_ENCRYPT(#{userPwd}, '${securityKey}')))
+    		,TO_BASE64(HEX(AES_ENCRYPT(#{userName}, '${securityKey}')))
     		,#{userType}
-    		,#{userBirthday}
+    		,TO_BASE64(HEX(AES_ENCRYPT(#{userBirthday}, '${securityKey}')))
     		,#{userCountry}
     		,#{userState}
-    		,#{userTelNo}
+    		,TO_BASE64(HEX(AES_ENCRYPT(#{userTelNo}, '${securityKey}')))
     		,#{userSex}
     		,SYSDATE()
     		,#{pushToken}
@@ -102,14 +102,14 @@
          SELECT
        		USER_NO
    			,USER_ID
-		    ,USER_NAME
-		    ,USER_EMAIL
+		    ,CAST(AES_DECRYPT(UNHEX(FROM_BASE64(USER_NAME)), '${securityKey}') AS CHAR)				AS USER_NAME
+		    ,CAST(AES_DECRYPT(UNHEX(FROM_BASE64(USER_EMAIL)), '${securityKey}') AS CHAR)				AS USER_EMAIL
 		    ,USER_TYPE
-		    ,USER_BIRTHDAY
+		    ,CAST(AES_DECRYPT(UNHEX(FROM_BASE64(USER_BIRTHDAY)), '${securityKey}') AS CHAR)			AS USER_BIRTHDAY
 			,USER_COUNTRY
 		    ,USER_STATE
 		    ,USER_ADDRESS
-		    ,USER_TEL_NO
+		    ,CAST(AES_DECRYPT(UNHEX(FROM_BASE64(USER_TEL_NO)), '${securityKey}') AS CHAR)				AS USER_TEL_NO
 		    ,USER_SEX
 		    ,DATE_FORMAT(USER_RGST_DT, '%Y-%m-%d') AS USER_RGST_DT
 		    ,PUSH_TOKEN 
@@ -133,13 +133,13 @@
 		UPDATE ST_USER
 		<trim prefix="SET" suffixOverrides=",">
 			<if test="userPwd != null and userPwd != '' ">
-				USER_PWD = #{userPwd},
+				USER_PWD = TO_BASE64(HEX(AES_ENCRYPT(#{userPwd}, '${securityKey}'))),
 	   		</if>
 			<if test="userName != null and userName != '' ">
-				USER_NAME = #{userName},
+				USER_NAME = TO_BASE64(HEX(AES_ENCRYPT(#{userName}, '${securityKey}'))),
 	   		</if>	
 			<if test="userBirthday != null and userBirthday != '' ">
-				USER_BIRTHDAY = #{userBirthday},
+				USER_BIRTHDAY = TO_BASE64(HEX(AES_ENCRYPT(#{userBirthday}, '${securityKey}'))),
 	   		</if>	
 			<if test="userCountry != null and userCountry != '' ">
 				USER_COUNTRY = #{userCountry},
@@ -148,16 +148,16 @@
 				USER_STATE = #{userState},
 	   		</if>	
 			<if test="sidoNm != null and sidoNm != '' ">
-				,SIDO_NM = #{sidoNm},
+				SIDO_NM = #{sidoNm},
 	   		</if>	
 			<if test="sigunguNm != null and sigunguNm != '' ">
-				,SIGUNGU_NM = #{sigunguNm},
+				SIGUNGU_NM = #{sigunguNm},
 	   		</if>	
 			<if test="eupmyeondongNm != null and eupmyeondongNm != '' ">
-				,EUPMYEONDONG_NM = #{eupmyeondongNm},
+				EUPMYEONDONG_NM = #{eupmyeondongNm},
 	   		</if>	
 			<if test="userTelNo != null and userTelNo != '' ">
-				 USER_TEL_NO = #{userTelNo},
+				USER_TEL_NO = TO_BASE64(HEX(AES_ENCRYPT(#{userTelNo}, '${securityKey}'))),
 	   		</if>	
 			<if test="userSex != null and userSex != '' ">
 				 USER_SEX = #{userSex},
@@ -186,5 +186,54 @@
 		
     </update>
     
+    
+    
+    
+    
+	<!-- 조회 앱 계정 정보 조회 -->
+    <select id="selectEqualUserInfo" parameterType="String" resultType="hashmap">
+    
+		SELECT
+       		USER_NO
+       		,USER_ID
+       		,USER_PWD
+       		,USER_TYPE
+       		,CAST(AES_DECRYPT(UNHEX(FROM_BASE64(USER_NAME)), '${securityKey}') AS CHAR)		AS USER_NAME
+       		,CAST(AES_DECRYPT(UNHEX(FROM_BASE64(USER_EMAIL)), '${securityKey}') AS CHAR)		AS USER_EMAIL
+       		,CAST(AES_DECRYPT(UNHEX(FROM_BASE64(USER_BIRTHDAY)), '${securityKey}') AS CHAR)	AS USER_BIRTHDAY
+       		,USER_COUNTRY
+       		,USER_STATE
+       		,USER_ADDRESS
+       		,CAST(AES_DECRYPT(UNHEX(FROM_BASE64(USER_TEL_NO)), '${securityKey}') AS CHAR)		AS USER_TEL_NO
+       		,USER_SEX
+       		,USER_RGST_DT
+       		,PUSH_TOKEN
+       		,LOGIN_DT
+       		,USER_DELETE_YN
+       		,USER_DELETE_DT
+       		,LOGIN_CK
+       		,COUNTRY_NM
+       		,STATE_NM
+       		,SIDO_NM
+       		,SIGUNGU_NM
+       		,EUPMYEONDONG_NM
+       		,ADDR_DETAIL
+       		,ORGAN_CD
+       		,AUTH_STATUS
+       		,AUTH_KEY
+       		,AUTH_EMAIL
+       		,TEETH_TYPE 
+		FROM ST_USER
+		WHERE 1=1
+		AND USER_NAME = TO_BASE64(HEX(AES_ENCRYPT(#{userName}, '${securityKey}')))
+		AND USER_TEL_NO = TO_BASE64(HEX(AES_ENCRYPT(#{userTelNo}, '${securityKey}')))
+		ANd USER_BIRTHDAY = TO_BASE64(HEX(AES_ENCRYPT(#{userBirthday}, '${securityKey}')))
+		AND USER_ID <![CDATA[<>]]> #{userId}
+   		
+    </select>
+    
+    
+	
+	
 	
 </mapper>

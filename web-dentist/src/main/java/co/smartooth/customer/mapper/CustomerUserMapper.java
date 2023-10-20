@@ -1,5 +1,8 @@
 package co.smartooth.customer.mapper;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -7,8 +10,8 @@ import co.smartooth.customer.vo.CustomerUserVO;
 
 /**
  * 작성자 : 정주현 
- * 작성일 : 2022. 04. 28
- * 수정일 : 2023. 05. 16
+ * 작성일 : 2023. 08. 01
+ * 수정일 : 2023. 09. 05
  */
 @Mapper
 public interface CustomerUserMapper {
@@ -37,6 +40,37 @@ public interface CustomerUserMapper {
 	
 	// 푸시토큰 업데이트
 	public void updatePushToken(@Param("userId") String userId, @Param("pushToken") String pushToken) throws Exception;
+	
+	
+	// 치과에서 측정한 같은 사용자가 있는지 조회
+	public List<HashMap<String, Object>> selectEqualUserInfo(@Param("userName") String userName, @Param("userTelNo") String userTelNo, @Param("userBirthday") String userBirthday, @Param("userId") String userId) throws Exception;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -139,4 +173,4 @@ public interface CustomerUserMapper {
 //	public String selectDentistId(@Param("dentalHospitalCd") String dentalHospitalCd) throws Exception;
 	
 	
-	}
+}

@@ -3,6 +3,8 @@
 <mapper namespace="co.smartooth.web.mapper.WebRegistMapper">
 
 	
+	
+	
 	    
     <!--전체 시퀀스 조회 --> 
     <select id="selectSeqNoAll" resultType="co.smartooth.web.vo.WebSeqNoVO">
@@ -25,6 +27,7 @@
 
 
     
+    
     <!-- SEQ(param) 업데이트 --> 
     <update id="updateSeqNo" parameterType="String">
     
@@ -33,6 +36,7 @@
     	   	
     </update>
 	
+
 
 
 
@@ -50,6 +54,7 @@
 
 
     
+
     <!-- 시도 이름으로 시도 코드 조회 --> 
     <select id="selectSidoCd" parameterType="String" resultType="String">
     
@@ -60,6 +65,7 @@
     	AND SIDO_Nm = #{siDoNm}
     	
     </select>
+
 
 
 
@@ -85,6 +91,7 @@
 		LIMIT 1
     	
     </select>
+    
     
     
     
@@ -116,6 +123,7 @@
 
 
     
+
     
     <insert id="insertClassInfo" parameterType="String">
 
@@ -131,6 +139,7 @@
 					)
     	
     </insert>
+
 
 
 
@@ -168,14 +177,14 @@
 			(
 				NULL
 		        ,#{userId}
-		        ,#{userPwd}
+		        ,TO_BASE64(HEX(AES_ENCRYPT(#{userPwd}, '${securityKey}')))
 		        ,#{userType}
-		        ,#{userName}
-		        ,#{userBirthday}
+		        ,TO_BASE64(HEX(AES_ENCRYPT(#{userName}, '${securityKey}')))
+		        ,TO_BASE64(HEX(AES_ENCRYPT(#{userBirthday}, '${securityKey}')))
 		        ,#{countryCd}
 		        ,NULL
 		        ,#{userAddr}
-		        ,#{userTelNo}
+		        ,TO_BASE64(HEX(AES_ENCRYPT(#{userTelNo}, '${securityKey}')))
 		        ,#{userSex}
 		        ,SYSDATE()
 		        ,NULL
@@ -195,6 +204,7 @@
     </insert>
 	
 
+	
 	
 	
 	<!-- 	부서 아이디 상세 정보 등록 -->
@@ -220,6 +230,7 @@
     
     
 	
+	
 	<!-- 측정 회원 부모님 아이디 상세 정보 등록 -->
     <insert id="insertPaUserDetail" parameterType="String">
 
@@ -235,6 +246,7 @@
 			)
 	
 	</insert>
+	
 	
 	
 	
@@ -272,6 +284,7 @@
 	
 	
 	
+	
 	<!-- 측정 회원 치아 정보 등록 -->
     <insert id="insertStUserTeethInfo" parameterType="String">
 
@@ -291,6 +304,7 @@
             )
 	
 	</insert>
+	
 	
 	
 	

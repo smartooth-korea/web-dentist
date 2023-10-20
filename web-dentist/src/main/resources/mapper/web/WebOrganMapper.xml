@@ -3,6 +3,9 @@
 <mapper namespace="co.smartooth.web.mapper.WebOrganMapper">
 
 
+
+
+
 	<!-- 실시간 기관 조회 -->
     <select id="ajaxSelectOrganList" parameterType="String" resultType="map">
 		SELECT 
@@ -21,6 +24,8 @@
    		</if>
    		ORDER BY SCHOOL_CODE ASC
     </select>
+    
+    
     
     
     
@@ -47,6 +52,8 @@
 
 
 
+
+
 	<!-- 치과 실시간 검색 (ajax) - DENTAL_HOSPITAL_INFO 테이블 -->
 	    <select id="ajaxSelectDentalHospitalList" parameterType="String" resultType="map">
 			SELECT 
@@ -70,6 +77,8 @@
 	   		ORDER BY DENTAL_HOSPITAL_CD ASC
 	    </select>
 		
+
+
 
 
 	<!-- 기관 정보 등록 -->
@@ -123,6 +132,7 @@
 	
 	
 	
+	
 	<!-- 기관 정보 조회 -->
     <select id="selectOrganInfo" parameterType="String" resultType="co.smartooth.web.vo.WebOrganVO">
 
@@ -139,6 +149,7 @@
 		AND SCHOOL_CODE = #{schoolCode}
 
     </select>
+	
 	
 	
 	
@@ -163,6 +174,7 @@
 	
 	
 	
+	
 	<!-- 자문치과 조회 -->
 	<select id="selectAdviceDentistInfo" parameterType="String" resultType="co.smartooth.web.vo.WebAdviceVO">
 	
@@ -175,6 +187,7 @@
 		AND SCHOOL_CODE = #{schoolCode}
 	
 	</select>
+	
 	
 	
 	
@@ -192,6 +205,7 @@
 	
 	
 	
+	
 	<!-- 진단지 계산 일괄 작업 여부 업데이트 (Y) -->
 	<update id="updateDignosisBatchedStatus" parameterType="String">
 	
@@ -205,6 +219,7 @@
 	
 	
 	
+	
 	<!-- 그래프 계산 일괄 작업 여부 확인 -->
 <!-- 	<select id="selectIsGraphBatched" parameterType="String" resultType="String"> -->
 <!-- 		SELECT IS_GRAPH_BATCHED -->
@@ -212,6 +227,7 @@
 <!-- 		WHERE 1=1 -->
 <!-- 		AND SCHOOL_CODE = #{schoolCode} -->
 <!-- 	</select> -->
+	
 	
 	
 	
@@ -229,6 +245,7 @@
 	
 	
 	
+	
 	<!-- 기관에 속한 피측정자 시퀀스 증가 -->
 	<update id="updateOrganUserSeqNo" parameterType="co.smartooth.web.vo.WebOrganVO">
 	
@@ -242,7 +259,9 @@
 	
 	
 	
-		<!-- 기관 치아 측정일 목록 조회 (기관코드) -->
+	
+	
+	<!-- 기관 치아 측정일 목록 조회 (기관코드) -->
 	<select id="selectOrganMeasureDtList" parameterType="String" resultType="HashMap">
 
 		SELECT
@@ -263,5 +282,8 @@
 		
 	</select>
 	
+
+
+
 
 </mapper>

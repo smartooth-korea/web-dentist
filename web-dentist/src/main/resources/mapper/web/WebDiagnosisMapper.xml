@@ -3,6 +3,9 @@
 <mapper namespace="co.smartooth.web.mapper.WebDiagnosisMapper">
 
 
+
+
+
 	<!-- 최상위 진단 정보 조회 -->
     <select id="selectDiagDept1List" resultType="co.smartooth.web.vo.WebDiagnosisVO">
         SELECT
@@ -10,6 +13,7 @@
         	,DIAG_NM
 		FROM ST_DIAG_DEPT1
     </select>
+
 
 
 
@@ -22,6 +26,7 @@
         	,DIAG_NM
 		  FROM ST_DIAG_DEPT2
     </select>
+
 
 
 
@@ -42,7 +47,8 @@
 	
 	
 	
-	 <!-- 진단 키워드 제목 조회 -->
+	
+	<!-- 진단 키워드 제목 조회 -->
     <select id="selectDiagTitle" parameterType="String" resultType="String">
         
 		SELECT 
@@ -57,7 +63,9 @@
     
     
     
-	 <!-- 진단 코드 내용의 Count 조회 -->
+    
+    
+	<!-- 진단 코드 내용의 Count 조회 -->
     <select id="selectDiagDescriptCount" parameterType="String" resultType="Integer">
 		
 		SELECT COUNT(*)

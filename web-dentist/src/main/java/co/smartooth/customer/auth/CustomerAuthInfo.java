@@ -6,6 +6,7 @@ package co.smartooth.customer.auth;
  * 수정일 : 2023. 08. 17
  * 서버분리 : 2023. 08. 01
  */
+
 public class CustomerAuthInfo {
 
 	private String id;

@@ -125,4 +125,93 @@
 	
 	
 	
+	
+		<!-- 조회 앱 - 치과에서 측정한 같은 사용자가 있을 경우 측정 기록 조회 --> 
+    <select id="selectUserTeethMeasureValueInDentist" parameterType="String" resultType="hashmap">
+		
+		SELECT 
+			STM.USER_NO			AS userNo
+			,STM.USER_ID 			AS userId
+			,STM.T01															AS t01
+			,STM.T02															AS t02
+			,STM.T03															AS t03
+			,STM.T04															AS t04
+			,STM.T05															AS t05
+			,STM.T06															AS t06
+			,STM.T07															AS t07
+			,STM.T08															AS t08
+			,STM.T09															AS t09
+			,STM.T10															AS t10
+			,STM.T11															AS t11
+			,STM.T12															AS t12
+			,STM.T13															AS t13
+			,STM.T14															AS t14
+			,STM.T15															AS t15
+			,STM.T16															AS t16
+			,STM.T17															AS t17
+			,STM.T18															AS t18
+			,STM.T19															AS t19
+			,STM.T20															AS t20
+			,STM.T21															AS t21
+			,STM.T22															AS t22
+			,STM.T23															AS t23
+			,STM.T24															AS t24
+			,STM.T25															AS t25
+			,STM.T26															AS t26
+			,STM.T27															AS t27
+			,STM.T28															AS t28
+			,STM.T29															AS t29
+			,STM.T30															AS t30
+			,STM.T31															AS t31
+			,STM.T32															AS t32
+			,STM.T33															AS t33
+			,STM.T34															AS t34
+			,STM.T35															AS t35
+			,STM.T36															AS t36
+			,STM.T37															AS t37
+			,STM.T38															AS t38
+			,STM.T39															AS t39
+			,STM.T40															AS t40
+			,STM.T41															AS t41
+			,STM.T42															AS t42
+			,STM.T43															AS t43
+			,STM.T44															AS t44
+			,STM.T45															AS t45
+			,STM.T46															AS t46
+			,STM.T47															AS t47
+			,STM.T48															AS t48
+			,STM.T49															AS t49
+			,STM.T50															AS t50
+			,STM.T51															AS t51
+			,STM.T52															AS t52
+			,STM.T53															AS t53
+			,STM.T54															AS t54
+			,STM.T55															AS t55
+			,STM.T56															AS t56
+<!-- 			,STM.CAVITY_NORMAL											AS cavityNormal -->
+<!-- 			,STM.CAVITY_CAUTION											AS cavityCaution -->
+<!-- 			,STM.CAVITY_DANGER											AS cavityDanger -->
+<!-- 			,STM.PERM_CAVITY_NORMAL									AS permCavityNormal -->
+<!-- 			,STM.PERM_CAVITY_CAUTION								AS permCavityCaution -->
+<!-- 			,STM.PERM_CAVITY_DANGER									AS permCavityDanger -->
+			,STM.DIAG_CD														AS diagCd
+			,STM.ORGAN_CODE												AS dentalHospitalCd
+			,SDHI.DENTAL_HOSPITAL_NM									AS dentalHospitalNm
+			,SDHI.DENTAL_HOSPITAL_TEL_NO							AS dentalHospitalTelNo
+			,SDHI.DENTAL_HOSPITAL_SIDO_NM							AS dentalHospitalSidoNm
+			,SDHI.DENTAL_HOSPITAL_SIGUNGU_NM					AS dentalHospitalSigunguNm
+			,SDHI.DENTAL_HOSPITAL_EUPMYEONDONG_NM			AS dentalHospitalEupmyeondongNm
+			,STM.MEASURER_ID												AS measurerId
+			,DATE_FORMAT(STM.MEASURE_DT, '%Y-%m-%d')		AS measureDt
+		FROM ST_TEETH_MEASURE STM
+		LEFT OUTER JOIN ST_DENTAL_HOSPITAL_INFO SDHI
+		ON STM.ORGAN_CODE = SDHI.DENTAL_HOSPITAL_CD
+		WHERE 1=1 
+		AND USER_ID = #{userId}
+		AND DATE_FORMAT(MEASURE_DT, '%Y-%m-%d') BETWEEN #{startDt} AND #{endDt}
+		ORDER BY MEASURE_DT DESC
+		
+    </select >
+	
+	
 </mapper>

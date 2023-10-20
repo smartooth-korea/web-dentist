@@ -172,23 +172,17 @@ public class CustomerUserController {
 		
 		try {
 			
-			// 암호화 메소드
-			AES256Util aes256Util = new AES256Util();
-
 			// 아이디 암호화
 			userId = (String)paramMap.get("userId");
-			//userId = aes256Util.aesEncode(userId);
 			
 			// 회원 이메일
 			userEmail = userId;
 			
 			// 비밀번호 암호화
 			userPwd = (String)paramMap.get("userPwd");
-			userPwd = aes256Util.aesEncode(userPwd);
 			
 			// 이름 암호화
 			userName = (String)paramMap.get("userName");
-			//userName = aes256Util.aesEncode(userName);
 			
 			// 회원 종류
 			userType = (String)paramMap.get("userType");
@@ -438,10 +432,6 @@ public class CustomerUserController {
 		userId = request.getParameter("userId");
 		emailAuthKey = request.getParameter("emailAuthKey");
 		
-		// 복호화
-		AES256Util aes256Util = new AES256Util();
-		userId = aes256Util.aesDecode(userId);
-		
 		// 토큰 검증
 		JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
 		tokenValidation = jwtTokenUtil.validateToken(emailAuthKey);
@@ -508,7 +498,7 @@ public class CustomerUserController {
 		}
 		
 		userAuthToken = (String)paramMap.get("userAuthToken");
-		userName = (String)paramMap.get("userName");
+		userName = (String)paramMap.get("userNm");
 		userBirthday = (String)paramMap.get("userBirthday");
 		userCountry = (String)paramMap.get("userCountry");
 		userState = (String)paramMap.get("userState");

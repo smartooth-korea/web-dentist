@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
  * 수정일 : 2023. 08. 17
  * 서버분리 : 2023. 08. 01
  */
+
 @Component
 public class CustomerMailAuthInfo extends Authenticator{
     

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.smartooth.customer.mapper.CustomerReserveMapper">
+
+	
+
+
+	<select id="isExistCustomerInfomationAgree" parameterType="String" resultType="Integer">
+	
+		SELECT COUNT(*)
+		FROM ST_CUSTOMER_INFOMATION_AGREE_INFO
+		WHERE 1=1
+		AND USER_ID = #{userId}
+		AND DENTAL_HOSPITAL_CD = #{dentalHospitalCd}
+		
+	</select>
+
+
+
+
+
+	<insert id="insertCustomerInfoAgree" parameterType="String">
+		
+		INSERT INTO ST_CUSTOMER_INFOMATION_AGREE_INFO
+            (
+            	USER_NO
+             	,USER_ID
+             	,USER_TEL_NO
+             	,USER_EMAIL
+             	,DENTAL_HOSPITAL_CD
+             	,INFORMATION_AGRYN
+             	,INFORMATION_AGRYN_DT
+			)
+		VALUES
+			(
+				NULL
+            	,#{userId}
+<!--             	,#{userTelNo} -->
+            	,TO_BASE64(HEX(AES_ENCRYPT(#{userTelNo}, '${securityKey}')))
+<!--             	,#{userEmail} -->
+            	,TO_BASE64(HEX(AES_ENCRYPT(#{userEmail}, '${securityKey}')))
+            	,#{dentalHospitalCd}
+            	,'Y'
+            	,SYSDATE()
+            ) 
+		
+	</insert>
+
+
+
+
+
+	<update id="updateCustomerInfoAgree" parameterType="String">
+		
+		UPDATE ST_CUSTOMER_INFOMATION_AGREE_INFO
+		SET INFORMATION_AGRYN = #{infomationAgryn}
+		WHERE 1=1
+		AND USER_ID = #{userId}
+		AND DENTAL_HOSPITAL_CD = #{dentalHospitalCd}
+				
+	</update>
+
+
+
+
+
+
+	<delete id="deleteCustomerInfoAgree" parameterType="String">
+		
+		DELETE FROM ST_CUSTOMER_INFOMATION_AGREE_INFO
+		WHERE 1=1
+		AND USER_ID = #{userId}
+		AND DENTAL_HOSPITAL_CD = #{dentalHospitalCd}
+				
+	</delete>
+	
+	
+</mapper>

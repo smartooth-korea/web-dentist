@@ -13,7 +13,7 @@ spring:
         db-username: smartooth
         db-password: smartooth509#
         
-    loginUrl: 13.209.156.47:8094
+    loginUrl: 13.209.156.47:8093
 
         
     mvc:
@@ -45,7 +45,7 @@ spring:
 
 server:
     ip: 13.209.156.47
-    port: 8094
+    port: 8093
 
             
 #---

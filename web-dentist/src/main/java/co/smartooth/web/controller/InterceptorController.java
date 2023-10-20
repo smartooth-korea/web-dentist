@@ -44,4 +44,28 @@ public class InterceptorController {
 		return "/test/selectDentalHospitalAgreeList";
 	}
 	
+	
+	/** 개인정보 동의 등록 **/
+	@GetMapping(value = {"/insertCustomerInfoAgree"})
+	public String insertCustomerInfoAgree() {
+		return "/test/insertCustomerInfoAgree";
+	}
+
+	
+	/** 개인정보 동의 등록 **/
+	@GetMapping(value = {"/updateCustomerInfoAgree"})
+	public String updateCustomerInfoAgree() {
+		return "/test/updateCustomerInfoAgree";
+	}
+
+	
+	/** 개인정보 동의 등록 **/
+	@GetMapping(value = {"/deleteCustomerInfoAgree"})
+	public String deleteCustomerInfoAgree() {
+		return "/test/deleteCustomerInfoAgree";
+	}
+	
+	
+	
+	
 }

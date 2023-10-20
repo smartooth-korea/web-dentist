@@ -70,8 +70,8 @@ public class WebUserController {
 		// 회원 비밀번호
 		String userPwd = paramMap.get("userPwd");
 		
-		AES256Util aes256Util = new AES256Util();
-		userPwd = aes256Util.aesEncode(userPwd);
+		//AES256Util aes256Util = new AES256Util();
+		//userPwd = aes256Util.aesEncode(userPwd);
 		
 		webUserService.updateUserPwd(userId, userPwd);
 		
@@ -243,12 +243,12 @@ public class WebUserController {
 			prUserId = userName+strBirthday+paUserTelNo3;
 			
 			// 법정대리인 회원 비밀번호 :: 휴대전화 번호 뒷자리 4자리 
-			paUserPwd = aes256Util.aesEncode(paUserTelNo3);
+			// paUserPwd = aes256Util.aesEncode(paUserTelNo3);
 			
 			// 법정대리인 회원 정보 VO
 			webPrUserVO.setUserId(prUserId);
 			webPrUserVO.setUserName(prUserName);
-			webPrUserVO.setUserPwd(paUserPwd);
+			webPrUserVO.setUserPwd(paUserTelNo3);
 			webPrUserVO.setUserType("PR");
 			webPrUserVO.setUserTelNo(paUserTelNo);
 			webPrUserVO.setUserCountry(countryCd);
@@ -322,12 +322,12 @@ public class WebUserController {
 			strBirthday = userBritday.substring(2, userBritday.length()).replaceAll("-", "");
 
 			// 피측정자 비밀번호 :: 생년월일(190101) 
-			userPwd = aes256Util.aesEncode(strBirthday);
+			// userPwd = aes256Util.aesEncode(strBirthday);
 			
 			// 피측정자 정보 VO
 			webStUserVO.setUserId(userId);
 			webStUserVO.setUserName(userName);
-			webStUserVO.setUserPwd(userPwd);
+			webStUserVO.setUserPwd(strBirthday);
 			webStUserVO.setUserType("PT");
 			webStUserVO.setUserBirthday(userBritday);
 			webStUserVO.setUserCountry(countryCd);
