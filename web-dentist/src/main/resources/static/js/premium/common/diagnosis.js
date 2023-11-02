@@ -1608,8 +1608,7 @@ function changeToothColorByLevel(dataList, index, paramCaution, paramDanger) {
 
 function displayToothMeasureValue(dataList){
 	
-	console.log(JSON.stringify(dataList));
-	
+	// 측정 값이 -99일 경우 빈 값으로 변경
 	if(dataList[0].t11 == -99) dataList[0].t11 = " ";
 	if(dataList[0].t12 == -99) dataList[0].t12 = " ";
 	if(dataList[0].t13 == -99) dataList[0].t13 = " ";
@@ -1664,271 +1663,271 @@ function displayToothMeasureValue(dataList){
 	if(dataList[0].t85 == -99) dataList[0].t85 = " ";
 	
 	
-	if(parseInt(dataList[0].t11) > 100){
+	if(parseInt(dataList[0].t11) > 1000){
 		dataList[0].t11 = parseInt(dataList[0].t11)-1000;
-		dataList[0].t11 = "<u>"+dataList[0].t11+"</u>";
+		dataList[0].t11 = dataList[0].t11;
 	}
-	if(parseInt(dataList[0].t12) > 100){
+	if(parseInt(dataList[0].t12) > 1000){
 		dataList[0].t12 = parseInt(dataList[0].t12)-1000;
-		dataList[0].t12 = "<u>"+dataList[0].t12+"</u>";
+		dataList[0].t12 = dataList[0].t12;
 	}
-	if(parseInt(dataList[0].t13) > 100){
+	if(parseInt(dataList[0].t13) > 1000){
 		dataList[0].t13 = parseInt(dataList[0].t13)-1000;
-		dataList[0].t13 = "<u>"+dataList[0].t13+"</u>";
+		dataList[0].t13 = dataList[0].t13;
 	}
-	if(parseInt(dataList[0].t14) > 100){
+	if(parseInt(dataList[0].t14) > 1000){
 		dataList[0].t14 = parseInt(dataList[0].t14)-1000;
-		dataList[0].t14 = "<u>"+dataList[0].t14+"</u>";
+		dataList[0].t14 = dataList[0].t14;
 	}
-	if(parseInt(dataList[0].t15) > 100){
+	if(parseInt(dataList[0].t15) > 1000){
 		dataList[0].t15 = parseInt(dataList[0].t15)-1000;
-		dataList[0].t15 = "<u>"+dataList[0].t15+"</u>";
+		dataList[0].t15 = dataList[0].t15;
 	}
-	if(parseInt(dataList[0].t16) > 100){
+	if(parseInt(dataList[0].t16) > 1000){
 		dataList[0].t16 = parseInt(dataList[0].t16)-1000;
-		dataList[0].t16 = "<u>"+dataList[0].t16+"</u>";
+		dataList[0].t16 = dataList[0].t16;
 	}
-	if(parseInt(dataList[0].t17) > 100){
+	if(parseInt(dataList[0].t17) > 1000){
 		dataList[0].t17 = parseInt(dataList[0].t17)-1000;
-		dataList[0].t17 = "<u>"+dataList[0].t17+"</u>";
+		dataList[0].t17 = dataList[0].t17;
 	}
-	if(parseInt(dataList[0].t18) > 100){
+	if(parseInt(dataList[0].t18) > 1000){
 		dataList[0].t18 = parseInt(dataList[0].t18)-1000;
-		dataList[0].t18 = "<u>"+dataList[0].t18+"</u>";
+		dataList[0].t18 = dataList[0].t18;
 	}
-	if(parseInt(dataList[0].t21) > 100){
+	if(parseInt(dataList[0].t21) > 1000){
 		dataList[0].t21 = parseInt(dataList[0].t21)-1000;
-		dataList[0].t21 = "<u>"+dataList[0].t21+"</u>";
+		dataList[0].t21 = dataList[0].t21;
 	}
-	if(parseInt(dataList[0].t22) > 100){
+	if(parseInt(dataList[0].t22) > 1000){
 		dataList[0].t22 = parseInt(dataList[0].t22)-1000;
-		dataList[0].t22 = "<u>"+dataList[0].t22+"</u>";
+		dataList[0].t22 = dataList[0].t22;
 	}
-	if(parseInt(dataList[0].t23) > 100){
+	if(parseInt(dataList[0].t23) > 1000){
 		dataList[0].t23 = parseInt(dataList[0].t23)-1000;
-		dataList[0].t23 = "<u>"+dataList[0].t23+"</u>";
+		dataList[0].t23 = dataList[0].t23;
 	}
-	if(parseInt(dataList[0].t24) > 100){
+	if(parseInt(dataList[0].t24) > 1000){
 		dataList[0].t24 = parseInt(dataList[0].t24)-1000;
-		dataList[0].t24 = "<u>"+dataList[0].t24+"</u>";
+		dataList[0].t24 = dataList[0].t24;
 	}
-	if(parseInt(dataList[0].t25) > 100){
+	if(parseInt(dataList[0].t25) > 1000){
 		dataList[0].t25 = parseInt(dataList[0].t25)-1000;
-		dataList[0].t25 = "<u>"+dataList[0].t25+"</u>";
+		dataList[0].t25 = dataList[0].t25;
 	}
-	if(parseInt(dataList[0].t26) > 100){
+	if(parseInt(dataList[0].t26) > 1000){
 		dataList[0].t26 = parseInt(dataList[0].t26)-1000;
-		dataList[0].t26 = "<u>"+dataList[0].t26+"</u>";
+		dataList[0].t26 = dataList[0].t26;
 	}
-	if(parseInt(dataList[0].t27) > 100){
+	if(parseInt(dataList[0].t27) > 1000){
 		dataList[0].t27 = parseInt(dataList[0].t27)-1000;
-		dataList[0].t27 = "<u>"+dataList[0].t27+"</u>";
+		dataList[0].t27 = dataList[0].t27;
 	}
-	if(parseInt(dataList[0].t28) > 100){
+	if(parseInt(dataList[0].t28) > 1000){
 		dataList[0].t28 = parseInt(dataList[0].t28)-1000;
-		dataList[0].t28 = "<u>"+dataList[0].t28+"</u>";
+		dataList[0].t28 = dataList[0].t28;
 	}
-	if(parseInt(dataList[0].t31) > 100){
+	if(parseInt(dataList[0].t31) > 1000){
 		dataList[0].t31 = parseInt(dataList[0].t31)-1000;
-		dataList[0].t31 = "<u>"+dataList[0].t31+"</u>";
+		dataList[0].t31 = dataList[0].t31;
 	}
-	if(parseInt(dataList[0].t32) > 100){
+	if(parseInt(dataList[0].t32) > 1000){
 		dataList[0].t32 = parseInt(dataList[0].t32)-1000;
-		dataList[0].t32 = "<u>"+dataList[0].t32+"</u>";
+		dataList[0].t32 = dataList[0].t32;
 	}
-	if(parseInt(dataList[0].t33) > 100){
+	if(parseInt(dataList[0].t33) > 1000){
 		dataList[0].t33 = parseInt(dataList[0].t33)-1000;
-		dataList[0].t33 = "<u>"+dataList[0].t33+"</u>";
+		dataList[0].t33 = dataList[0].t33;
 	}
-	if(parseInt(dataList[0].t34) > 100){
+	if(parseInt(dataList[0].t34) > 1000){
 		dataList[0].t34 = parseInt(dataList[0].t34)-1000;
-		dataList[0].t34 = "<u>"+dataList[0].t34+"</u>";
+		dataList[0].t34 = dataList[0].t34;
 	}
-	if(parseInt(dataList[0].t35) > 100){
+	if(parseInt(dataList[0].t35) > 1000){
 		dataList[0].t35 = parseInt(dataList[0].t35)-1000;
-		dataList[0].t35 = "<u>"+dataList[0].t35+"</u>";
+		dataList[0].t35 = dataList[0].t35;
 	}
-	if(parseInt(dataList[0].t36) > 100){
+	if(parseInt(dataList[0].t36) > 1000){
 		dataList[0].t36 = parseInt(dataList[0].t36)-1000;
-		dataList[0].t36 = "<u>"+dataList[0].t36+"</u>";
+		dataList[0].t36 = dataList[0].t36;
 	}
-	if(parseInt(dataList[0].t37) > 100){
+	if(parseInt(dataList[0].t37) > 1000){
 		dataList[0].t37 = parseInt(dataList[0].t37)-1000;
-		dataList[0].t37 = "<u>"+dataList[0].t37+"</u>";
+		dataList[0].t37 = dataList[0].t37;
 	}
-	if(parseInt(dataList[0].t38) > 100){
+	if(parseInt(dataList[0].t38) > 1000){
 		dataList[0].t38 = parseInt(dataList[0].t38)-1000;
-		dataList[0].t38 = "<u>"+dataList[0].t38+"</u>";
+		dataList[0].t38 = dataList[0].t38;
 	}
-	if(parseInt(dataList[0].t41) > 100){
+	if(parseInt(dataList[0].t41) > 1000){
 		dataList[0].t41 = parseInt(dataList[0].t41)-1000;
-		dataList[0].t41 = "<u>"+dataList[0].t41+"</u>";
+		dataList[0].t41 = dataList[0].t41;
 	}
-	if(parseInt(dataList[0].t42) > 100){
+	if(parseInt(dataList[0].t42) > 1000){
 		dataList[0].t42 = parseInt(dataList[0].t42)-1000;
-		dataList[0].t42 = "<u>"+dataList[0].t42+"</u>";
+		dataList[0].t42 = dataList[0].t42;
 	}
-	if(parseInt(dataList[0].t43) > 100){
+	if(parseInt(dataList[0].t43) > 1000){
 		dataList[0].t43 = parseInt(dataList[0].t43)-1000;
-		dataList[0].t43 = "<u>"+dataList[0].t43+"</u>";
+		dataList[0].t43 = dataList[0].t43;
 	}
-	if(parseInt(dataList[0].t44) > 100){
+	if(parseInt(dataList[0].t44) > 1000){
 		dataList[0].t44 = parseInt(dataList[0].t44)-1000;
-		dataList[0].t44 = "<u>"+dataList[0].t44+"</u>";
+		dataList[0].t44 = dataList[0].t44;
 	}
-	if(parseInt(dataList[0].t45) > 100){
+	if(parseInt(dataList[0].t45) > 1000){
 		dataList[0].t45 = parseInt(dataList[0].t45)-1000;
-		dataList[0].t45 = "<u>"+dataList[0].t45+"</u>";
+		dataList[0].t45 = dataList[0].t45;
 	}
-	if(parseInt(dataList[0].t46) > 100){
+	if(parseInt(dataList[0].t46) > 1000){
 		dataList[0].t46 = parseInt(dataList[0].t46)-1000;
-		dataList[0].t46 = "<u>"+dataList[0].t46+"</u>";
+		dataList[0].t46 = dataList[0].t46;
 	}
-	if(parseInt(dataList[0].t47) > 100){
+	if(parseInt(dataList[0].t47) > 1000){
 		dataList[0].t47 = parseInt(dataList[0].t47)-1000;
-		dataList[0].t47 = "<u>"+dataList[0].t47+"</u>";
+		dataList[0].t47 = dataList[0].t47;
 	}
-	if(parseInt(dataList[0].t48) > 100){
+	if(parseInt(dataList[0].t48) > 1000){
 		dataList[0].t48 = parseInt(dataList[0].t48)-1000;
-		dataList[0].t48 = "<u>"+dataList[0].t48+"</u>";
+		dataList[0].t48 = dataList[0].t48;
 	}
 	
-	if(parseInt(dataList[0].t51) > 100){
+	if(parseInt(dataList[0].t51) > 1000){
 		dataList[0].t51 = parseInt(dataList[0].t51)-1000;
-		dataList[0].t51 = "<u>"+dataList[0].t51+"</u>";
+		dataList[0].t51 = dataList[0].t51;
 	}
-	if(parseInt(dataList[0].t52) > 100){
+	if(parseInt(dataList[0].t52) > 1000){
 		dataList[0].t52 = parseInt(dataList[0].t52)-1000;
-		dataList[0].t52 = "<u>"+dataList[0].t52+"</u>";
+		dataList[0].t52 = dataList[0].t52;
 	}
-	if(parseInt(dataList[0].t53) > 100){
+	if(parseInt(dataList[0].t53) > 1000){
 		dataList[0].t53 = parseInt(dataList[0].t53)-1000;
-		dataList[0].t53 = "<u>"+dataList[0].t53+"</u>";
+		dataList[0].t53 = dataList[0].t53;
 	}
-	if(parseInt(dataList[0].t54) > 100){
+	if(parseInt(dataList[0].t54) > 1000){
 		dataList[0].t54 = parseInt(dataList[0].t54)-1000;
-		dataList[0].t54 = "<u>"+dataList[0].t54+"</u>";
+		dataList[0].t54 = dataList[0].t54;
 	}
-	if(parseInt(dataList[0].t55) > 100){
+	if(parseInt(dataList[0].t55) > 1000){
 		dataList[0].t55 = parseInt(dataList[0].t55)-1000;
-		dataList[0].t55 = "<u>"+dataList[0].t55+"</u>";
+		dataList[0].t55 = dataList[0].t55;
 	}
 	
-	if(parseInt(dataList[0].t61) > 100){
+	if(parseInt(dataList[0].t61) > 1000){
 		dataList[0].t61 = parseInt(dataList[0].t61)-1000;
-		dataList[0].t61 = "<u>"+dataList[0].t61+"</u>";
+		//dataList[0].t61 = dataList[0].t61;
 	}
-	if(parseInt(dataList[0].t62) > 100){
+	if(parseInt(dataList[0].t62) > 1000){
 		dataList[0].t62 = parseInt(dataList[0].t62)-1000;
-		dataList[0].t62 = "<u>"+dataList[0].t62+"</u>";
+		dataList[0].t62 = dataList[0].t62;
 	}
-	if(parseInt(dataList[0].t63) > 100){
+	if(parseInt(dataList[0].t63) > 1000){
 		dataList[0].t63 = parseInt(dataList[0].t63)-1000;
-		dataList[0].t63 = "<u>"+dataList[0].t63+"</u>";
+		dataList[0].t63 = dataList[0].t63;
 	}
-	if(parseInt(dataList[0].t64) > 100){
+	if(parseInt(dataList[0].t64) > 1000){
 		dataList[0].t64 = parseInt(dataList[0].t64)-1000;
-		dataList[0].t64 = "<u>"+dataList[0].t64+"</u>";
+		dataList[0].t64 = dataList[0].t64;
 	}
-	if(parseInt(dataList[0].t65) > 100){
+	if(parseInt(dataList[0].t65) > 1000){
 		dataList[0].t65 = parseInt(dataList[0].t65)-1000;
-		dataList[0].t65 = "<u>"+dataList[0].t65+"</u>";
+		dataList[0].t65 = dataList[0].t65;
 	}
 	
-	if(parseInt(dataList[0].t71) > 100){
+	if(parseInt(dataList[0].t71) > 1000){
 		dataList[0].t71 = parseInt(dataList[0].t71)-1000;
-		dataList[0].t71 = "<u>"+dataList[0].t71+"</u>";
+		dataList[0].t71 = dataList[0].t71;
 	}
-	if(parseInt(dataList[0].t72) > 100){
+	if(parseInt(dataList[0].t72) > 1000){
 		dataList[0].t72 = parseInt(dataList[0].t72)-1000;
-		dataList[0].t72 = "<u>"+dataList[0].t72+"</u>";
+		dataList[0].t72 = dataList[0].t72;
 	}
-	if(parseInt(dataList[0].t73) > 100){
+	if(parseInt(dataList[0].t73) > 1000){
 		dataList[0].t73 = parseInt(dataList[0].t73)-1000;
-		dataList[0].t73 = "<u>"+dataList[0].t73+"</u>";
+		dataList[0].t73 = dataList[0].t73;
 	}
-	if(parseInt(dataList[0].t74) > 100){
+	if(parseInt(dataList[0].t74) > 1000){
 		dataList[0].t74 = parseInt(dataList[0].t74)-1000;
-		dataList[0].t74 = "<u>"+dataList[0].t74+"</u>";
+		dataList[0].t74 = dataList[0].t74;
 	}
-	if(parseInt(dataList[0].t75) > 100){
+	if(parseInt(dataList[0].t75) > 1000){
 		dataList[0].t75 = parseInt(dataList[0].t75)-1000;
-		dataList[0].t75 = "<u>"+dataList[0].t75+"</u>";
+		dataList[0].t75 = dataList[0].t75;
 	}
 	
-	if(parseInt(dataList[0].t81) > 100){
+	if(parseInt(dataList[0].t81) > 1000){
 		dataList[0].t81 = parseInt(dataList[0].t81)-1000;
-		dataList[0].t81 = "<u>"+dataList[0].t81+"</u>";
+		dataList[0].t81 = dataList[0].t81;
 	}
-	if(parseInt(dataList[0].t82) > 100){
+	if(parseInt(dataList[0].t82) > 1000){
 		dataList[0].t82 = parseInt(dataList[0].t82)-1000;
-		dataList[0].t82 = "<u>"+dataList[0].t82+"</u>";
+		dataList[0].t82 = dataList[0].t82;
 	}
-	if(parseInt(dataList[0].t83) > 100){
+	if(parseInt(dataList[0].t83) > 1000){
 		dataList[0].t83 = parseInt(dataList[0].t83)-1000;
-		dataList[0].t83 = "<u>"+dataList[0].t83+"</u>";
+		dataList[0].t83 = dataList[0].t83;
 	}
-	if(parseInt(dataList[0].t84) > 100){
+	if(parseInt(dataList[0].t84) > 1000){
 		dataList[0].t84 = parseInt(dataList[0].t84)-1000;
-		dataList[0].t84 = "<u>"+dataList[0].t84+"</u>";
+		dataList[0].t84 = dataList[0].t84;
 	}
-	if(parseInt(dataList[0].t85) > 100){
+	if(parseInt(dataList[0].t85) > 1000){
 		dataList[0].t85 = parseInt(dataList[0].t85)-1000;
-		dataList[0].t85 = "<u>"+dataList[0].t85+"</u>";
+		dataList[0].t85 = dataList[0].t85;
 	}
 	
-	$("#t11").html(dataList[0].t11);
-	$("#t12").html(dataList[0].t12);
-	$("#t13").html(dataList[0].t13);
-	$("#t14").html(dataList[0].t14);
-	$("#t15").html(dataList[0].t15);
-	$("#t16").html(dataList[0].t16);
-	$("#t17").html(dataList[0].t17);
-	$("#t18").html(dataList[0].t18);
-	$("#t21").html(dataList[0].t21);
-	$("#t22").html(dataList[0].t22);
-	$("#t23").html(dataList[0].t23);
-	$("#t24").html(dataList[0].t24);
-	$("#t25").html(dataList[0].t25);
-	$("#t26").html(dataList[0].t26);
-	$("#t27").html(dataList[0].t27);
-	$("#t28").html(dataList[0].t28);
-	$("#t31").html(dataList[0].t31);
-	$("#t32").html(dataList[0].t32);
-	$("#t33").html(dataList[0].t33);
-	$("#t34").html(dataList[0].t34);
-	$("#t35").html(dataList[0].t35);
-	$("#t36").html(dataList[0].t36);
-	$("#t37").html(dataList[0].t37);
-	$("#t38").html(dataList[0].t38);
-	$("#t41").html(dataList[0].t41);
-	$("#t42").html(dataList[0].t42);
-	$("#t43").html(dataList[0].t43);
-	$("#t44").html(dataList[0].t44);
-	$("#t45").html(dataList[0].t45);
-	$("#t46").html(dataList[0].t46);
-	$("#t47").html(dataList[0].t47);
-	$("#t48").html(dataList[0].t48);
-	$("#t51").html(dataList[0].t51);
-	$("#t52").html(dataList[0].t52);
-	$("#t53").html(dataList[0].t53);
-	$("#t54").html(dataList[0].t54);
-	$("#t55").html(dataList[0].t55);
-	$("#t61").html(dataList[0].t61);
-	$("#t62").html(dataList[0].t62);
-	$("#t63").html(dataList[0].t63);
-	$("#t64").html(dataList[0].t64);
-	$("#t65").html(dataList[0].t65);
-	$("#t71").html(dataList[0].t71);
-	$("#t72").html(dataList[0].t72);
-	$("#t73").html(dataList[0].t73);
-	$("#t74").html(dataList[0].t74);
-	$("#t75").html(dataList[0].t75);
-	$("#t81").html(dataList[0].t81);
-	$("#t82").html(dataList[0].t82);
-	$("#t83").html(dataList[0].t83);
-	$("#t84").html(dataList[0].t84);
-	$("#t85").html(dataList[0].t85);
+	$("#t11").html("<span class='teethValue'>"+dataList[0].t11+"</span>");
+	$("#t12").html("<span class='teethValue'>"+dataList[0].t12+"</span>");
+	$("#t13").html("<span class='teethValue'>"+dataList[0].t13+"</span>");
+	$("#t14").html("<span class='teethValue'>"+dataList[0].t14+"</span>");
+	$("#t15").html("<span class='teethValue'>"+dataList[0].t15+"</span>");
+	$("#t16").html("<span class='teethValue'>"+dataList[0].t16+"</span>");
+	$("#t17").html("<span class='teethValue'>"+dataList[0].t17+"</span>");
+	$("#t18").html("<span class='teethValue'>"+dataList[0].t18+"</span>");
+	$("#t21").html("<span class='teethValue'>"+dataList[0].t21+"</span>");
+	$("#t22").html("<span class='teethValue'>"+dataList[0].t22+"</span>");
+	$("#t23").html("<span class='teethValue'>"+dataList[0].t23+"</span>");
+	$("#t24").html("<span class='teethValue'>"+dataList[0].t24+"</span>");
+	$("#t25").html("<span class='teethValue'>"+dataList[0].t25+"</span>");
+	$("#t26").html("<span class='teethValue'>"+dataList[0].t26+"</span>");
+	$("#t27").html("<span class='teethValue'>"+dataList[0].t27+"</span>");
+	$("#t28").html("<span class='teethValue'>"+dataList[0].t28+"</span>");
+	$("#t31").html("<span class='teethValue'>"+dataList[0].t31+"</span>");
+	$("#t32").html("<span class='teethValue'>"+dataList[0].t32+"</span>");
+	$("#t33").html("<span class='teethValue'>"+dataList[0].t33+"</span>");
+	$("#t34").html("<span class='teethValue'>"+dataList[0].t34+"</span>");
+	$("#t35").html("<span class='teethValue'>"+dataList[0].t35+"</span>");
+	$("#t36").html("<span class='teethValue'>"+dataList[0].t36+"</span>");
+	$("#t37").html("<span class='teethValue'>"+dataList[0].t37+"</span>");
+	$("#t38").html("<span class='teethValue'>"+dataList[0].t38+"</span>");
+	$("#t41").html("<span class='teethValue'>"+dataList[0].t41+"</span>");
+	$("#t42").html("<span class='teethValue'>"+dataList[0].t42+"</span>");
+	$("#t43").html("<span class='teethValue'>"+dataList[0].t43+"</span>");
+	$("#t44").html("<span class='teethValue'>"+dataList[0].t44+"</span>");
+	$("#t45").html("<span class='teethValue'>"+dataList[0].t45+"</span>");
+	$("#t46").html("<span class='teethValue'>"+dataList[0].t46+"</span>");
+	$("#t47").html("<span class='teethValue'>"+dataList[0].t47+"</span>");
+	$("#t48").html("<span class='teethValue'>"+dataList[0].t48+"</span>");
+	$("#t51").html("<span class='teethValue'>"+dataList[0].t51+"</span>");
+	$("#t52").html("<span class='teethValue'>"+dataList[0].t52+"</span>");
+	$("#t53").html("<span class='teethValue'>"+dataList[0].t53+"</span>");
+	$("#t54").html("<span class='teethValue'>"+dataList[0].t54+"</span>");
+	$("#t55").html("<span class='teethValue'>"+dataList[0].t55+"</span>");
+	$("#t61").html("<span class='teethValue'>"+dataList[0].t61+"</span>");
+	$("#t62").html("<span class='teethValue'>"+dataList[0].t62+"</span>");
+	$("#t63").html("<span class='teethValue'>"+dataList[0].t63+"</span>");
+	$("#t64").html("<span class='teethValue'>"+dataList[0].t64+"</span>");
+	$("#t65").html("<span class='teethValue'>"+dataList[0].t65+"</span>");
+	$("#t71").html("<span class='teethValue'>"+dataList[0].t71+"</span>");
+	$("#t72").html("<span class='teethValue'>"+dataList[0].t72+"</span>");
+	$("#t73").html("<span class='teethValue'>"+dataList[0].t73+"</span>");
+	$("#t74").html("<span class='teethValue'>"+dataList[0].t74+"</span>");
+	$("#t75").html("<span class='teethValue'>"+dataList[0].t75+"</span>");
+	$("#t81").html("<span class='teethValue'>"+dataList[0].t81+"</span>");
+	$("#t82").html("<span class='teethValue'>"+dataList[0].t82+"</span>");
+	$("#t83").html("<span class='teethValue'>"+dataList[0].t83+"</span>");
+	$("#t84").html("<span class='teethValue'>"+dataList[0].t84+"</span>");
+	$("#t85").html("<span class='teethValue'>"+dataList[0].t85+"</span>");
 }
 
 	

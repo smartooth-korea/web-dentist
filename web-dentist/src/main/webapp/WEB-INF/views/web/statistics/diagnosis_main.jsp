@@ -16,6 +16,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/common/logo_img_ori.png">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/statistics/html2canvas.js"></script>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="/css/common/layout.css">
 <link rel="stylesheet" href="/css/web/statistics/diagnosis_main.css">
@@ -25,17 +26,12 @@
 	<div class="container" id="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<div class="background">
+				<div id="background" class="background">
 					<div class="container-top">
 						<div class="container-margin"></div>
-						<div id="userName" class="userName">${userNo}</div>
+						<div id="userName" class="userName">${dataList.userName}</div>
 						<div id="" class="measureDt-title">측정 일자</div>
 						<div id="measuerDt" class="measureDt">
-<!-- 						<select id="measureDtList" onchange="onSelect()"> -->
-<%-- 							<c:forEach var="item" items="${measureDtList}"> --%>
-<%-- 								<option value="${item}">${item}</option>						 --%>
-<%-- 							</c:forEach> --%>
-<!-- 						</select> -->
 								${measureDt}
 						</div>
 					</div>
@@ -140,8 +136,7 @@
 							<div class="commonWidth125Height25"></div>
 							<div class="commonWidth125Height25"></div>
 							<div class="commonWidth125Height25"></div>
-							<div class="commonWidth125Height25"></div>
-							<div class="commonWidth125Height25"></div>
+							<button id="btn_downloadImg" style="margin-left: 25px; font-size: 15px;">화면저장</button>
 						</div>
 						<div class="temp3" style="width: 25px;"></div>
 					</div>
@@ -155,6 +150,24 @@
 
 $(document).ready(function() {
 	
+	// 버튼 클릭시 스크린샷 후 저장
+	$("#btn_downloadImg").click(function(e){
+
+		// 치아 측정 값 visibility hidden 처리
+		$(".teethValue").css("display", "none");
+		html2canvas(document.getElementById("background"), {scale:6}).then(function(canvas) {
+			$(".teethValue").css("display", "block");
+            var el = document.createElement("a")
+            el.href = canvas.toDataURL("image/jpeg");
+    		var measureDt = "${dataList.measureDt}";
+    		var userName = "${dataList.userName}";
+    		var dentalHospitalNm = "${dentalHospitalNm}";
+            el.download = userName+" 환자_"+measureDt+".png"; //다운로드 할 파일명 설정
+            el.click();
+            
+        });
+    });
+	
 	// 세션 만료 시 창 닫기
 	if('${session}' == 'expired') {
 		alert("세션이 만료되어 로그아웃합니다. \n다시 로그인 해주시기 바랍니다.");
@@ -163,7 +176,7 @@ $(document).ready(function() {
 	
 	// 값을 가져와서 데이터를 확인하여 어떤 색으로 변경할지 정해줘야함
 	var dataList = new Array();
-	var dataList2 = new Array();
+	var dataListValue = new Array();
 	var index = 0;
 	var diagDescript = "${dataList.diagDescript}";
 	var cautionLevel = "${cautionLevel}";
@@ -247,9 +260,8 @@ $(document).ready(function() {
 	});
 	
 	
-	dataList2.push({
+	dataListValue.push({
 		userId:"${dataList.userId}"
-		
 		// 유치 상악
 		,t51:"${dataList.t38}"
 		,t52:"${dataList.t37}"
@@ -327,11 +339,7 @@ $(document).ready(function() {
 	changeToothColorByLevel(dataList, index, cautionLevel, dangerLevel);
 	
 	// 치아 안의 측정 값 표시
-	displayToothMeasureValue(dataList2);
-	
-	
-	
-	
+	displayToothMeasureValue(dataListValue);
 	
 });
 	

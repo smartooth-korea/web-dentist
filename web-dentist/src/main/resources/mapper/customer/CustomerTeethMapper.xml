@@ -130,8 +130,8 @@
     <select id="selectUserTeethMeasureValueInDentist" parameterType="String" resultType="hashmap">
 		
 		SELECT 
-			STM.USER_NO			AS userNo
-			,STM.USER_ID 			AS userId
+			STM.USER_NO														AS userNo
+			,STM.USER_ID 													AS userId
 			,STM.T01															AS t01
 			,STM.T02															AS t02
 			,STM.T03															AS t03
@@ -188,12 +188,6 @@
 			,STM.T54															AS t54
 			,STM.T55															AS t55
 			,STM.T56															AS t56
-<!-- 			,STM.CAVITY_NORMAL											AS cavityNormal -->
-<!-- 			,STM.CAVITY_CAUTION											AS cavityCaution -->
-<!-- 			,STM.CAVITY_DANGER											AS cavityDanger -->
-<!-- 			,STM.PERM_CAVITY_NORMAL									AS permCavityNormal -->
-<!-- 			,STM.PERM_CAVITY_CAUTION								AS permCavityCaution -->
-<!-- 			,STM.PERM_CAVITY_DANGER									AS permCavityDanger -->
 			,STM.DIAG_CD														AS diagCd
 			,STM.ORGAN_CODE												AS dentalHospitalCd
 			,SDHI.DENTAL_HOSPITAL_NM									AS dentalHospitalNm

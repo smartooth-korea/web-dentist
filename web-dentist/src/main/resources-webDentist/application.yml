@@ -1,15 +1,13 @@
-#스마투스 관리자 웹 
-#스마투스 관리자 웹 
-#스마투스 관리자 웹
+#스마투스 치과 웹 서비스
 spring:
     profiles:
-        active: dentist
+        active: webDentist
 
     #datasource (mariaDB)
     datasource:
-        #운영서버 Database - smartooth_premium
         driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-        db-url: jdbc:log4jdbc:mariadb://smartooth-premium-dev.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com/smartooth_premium
+        #db-url: jdbc:log4jdbc:mariadb://smartooth-premium-dev.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com/smartooth_premium
+        db-url: jdbc:log4jdbc:mariadb://smartooth-premium-dev.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com/smartooth_premium_encode
         db-username: smartooth
         db-password: smartooth509#
         

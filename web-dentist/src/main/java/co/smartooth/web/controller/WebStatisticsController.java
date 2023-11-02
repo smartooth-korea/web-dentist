@@ -821,6 +821,8 @@ public class WebStatisticsController {
 		String userNo = userId.substring(userId.lastIndexOf("-")+1, userId.length());
 		// 치과 코드
 		String dentalHospitalCd = userId.substring(0, userId.lastIndexOf("-"));
+		// 치과 이름
+		String dentalHospitalNm = null;
 		// 최근 측정일
 		String measureDt = request.getParameter("measureDt");
 		
@@ -1109,6 +1111,8 @@ public class WebStatisticsController {
 			// ST_STUDENT_USER_DETAIL 테이블에 CavityCnt 업데이트
 			webTeethService.updateUserCavityCntByMeasureDt(teethMeasureVO);
 
+			webOrganService.selectOrganInfo(dentalHospitalCd);
+			
 			returnUrl = "/web/statistics/diagnosis_main";
 
 		} catch (Exception e) {
@@ -1118,7 +1122,7 @@ public class WebStatisticsController {
 		
 		model.addAttribute("userNo", userNo);
 		model.addAttribute("dataList", teethMeasureVO);
-		model.addAttribute("schoolCode", dentalHospitalCd);
+		model.addAttribute("dentalHospitalCd", dentalHospitalCd);
 		model.addAttribute("measureDt", measureDt);
 		model.addAttribute("cautionLevel", cautionLevel);
 		model.addAttribute("dangerLevel", dangerLevel);

@@ -198,7 +198,10 @@ public class CustomerLoginController {
 				if(equalUserInfo != null) {
 					// 치과에서 측정한 같은 사용자가 있을 경우 측정 기록 조회
 					for(int i=0; i<equalUserInfo.size(); i++) {
-						userTeethValueList.addAll(userTeethValueList.size(), customerTeethService.selectUserTeethMeasureValueInDentist((String)equalUserInfo.get(i).get("USER_ID"), startDt, endDt));
+						//userTeethValueList.addAll(userTeethValueList.size(), customerTeethService.selectUserTeethMeasureValueInDentist((String)equalUserInfo.get(i).get("USER_ID"), startDt, endDt));
+						String equalUserId = (String)equalUserInfo.get(i).get("USER_ID");
+						List<HashMap<String, Object>> userTeethMeasureValueInDentist = customerTeethService.selectUserTeethMeasureValueInDentist(equalUserId, startDt, endDt);
+						userTeethValueList.addAll(userTeethValueList.size(), userTeethMeasureValueInDentist);
 					}
 				}
 //				else {
